@@ -7,6 +7,8 @@ RSpec.describe "a user can see how many total jobs have the same tags" do
     job2 = company.jobs.create!(title: "Manager", level_of_interest: 70, city: "Denver")
     tag = Tag.create(name: "Developer")
     tag2 = Tag.create(name: "Close to Home")
+    # I hate this, but I've not been able to figure out how to set up these
+    # associations in a test without clicking links or doing this attrocious business... Sorry...
     JobTag.create(job_id: job.id, tag_id: tag.id)
     JobTag.create(job_id: job.id, tag_id: tag2.id)
     JobTag.create(job_id: job2.id, tag_id: tag2.id)
