@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(version: 20170606161247) do
   end
 
   create_table "job_tags", force: :cascade do |t|
-    t.integer "jobs_id"
-    t.integer "tags_id"
-    t.index ["jobs_id"], name: "index_job_tags_on_jobs_id", using: :btree
-    t.index ["tags_id"], name: "index_job_tags_on_tags_id", using: :btree
+    t.integer "job_id"
+    t.integer "tag_id"
+    t.index ["job_id"], name: "index_job_tags_on_job_id", using: :btree
+    t.index ["tag_id"], name: "index_job_tags_on_tag_id", using: :btree
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20170606161247) do
     t.string "name"
   end
 
-  add_foreign_key "job_tags", "jobs", column: "jobs_id"
-  add_foreign_key "job_tags", "tags", column: "tags_id"
+  add_foreign_key "job_tags", "jobs"
+  add_foreign_key "job_tags", "tags"
   add_foreign_key "jobs", "companies"
 end

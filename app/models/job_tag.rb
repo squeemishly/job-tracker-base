@@ -1,4 +1,4 @@
 class JobTag < ActiveRecord::Base
-  has_many :tags
-  has_many :jobs
+  belongs_to :tag
+  belongs_to :job
 end
