@@ -5,7 +5,6 @@ RSpec.describe "a user can see a tag associated with a job" do
     company = Company.create!(name: "ESPN")
     job = company.jobs.create!(title: "Developer", level_of_interest: 70, city: "Denver")
     tag = Tag.create(name: "Developer")
-    binding.pry
     JobTag.create(job_id: job.id, tag_id: tag.id)
 
     visit company_job_path(company, job)
