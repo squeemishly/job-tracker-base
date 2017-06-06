@@ -8,6 +8,7 @@ RSpec.describe "a user can see a tag associated with a job" do
     JobTag.create(job_id: job.id, tag_id: tag.id)
 
     visit company_job_path(company, job)
+    save_and_open_page
 
     expect(page).to have_content "Tags: Developer"
   end
