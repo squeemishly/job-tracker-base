@@ -5,7 +5,7 @@ RSpec.describe "a user can see tags associated with a job when they visit a job 
     company = Company.create!(name: "ESPN")
     job = company.jobs.create!(title: "Developer", level_of_interest: 70, city: "Denver")
     tag = Tag.create(name: "Developer")
-    JobTag.create(job_id: job.id, tag_id: tag.id)
+    job.tags << tag
 
     visit company_job_path(company, job)
 
@@ -18,9 +18,9 @@ RSpec.describe "a user can see tags associated with a job when they visit a job 
     tag = Tag.create(name: "Developer")
     tag2 = Tag.create(name: "Close to Home")
     tag3 = Tag.create(name: "Daycare provided")
-    JobTag.create(job_id: job.id, tag_id: tag.id)
-    JobTag.create(job_id: job.id, tag_id: tag2.id)
-    JobTag.create(job_id: job.id, tag_id: tag3.id)
+    job.tags << tag
+    job.tags << tag2
+    job.tags << tag3
 
     visit company_job_path(company, job)
 
